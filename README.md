@@ -21,5 +21,16 @@ After several attempts and refinements,
 
     CREATE TABLE wonder_2018_2022 ( notes VARCHAR(128) DEFAULT NULL, icd_10_113_cause VARCHAR(256) DEFAULT NULL, icd_10_113_code VARCHAR(16) DEFAULT NULL, age_char VARCHAR(16) DEFAULT NULL, age_num INTEGER DEFAULT NULL, year VARCHAR(16) DEFAULT NULL, year_num INTEGER DEFAULT NULL, deaths INTEGER DEFAULT NULL, population INTEGER DEFAULT NULL, crude_rate VARCHAR(16) DEFAULT NULL);
 
-    LOAD DATA INFILE '/var/lib/mysql-files/Underlying Cause of Death, 2018-2022, Single Race_year_1_19_trunc.txt' INTO TABLE wonder_2018_2022 FIELDS TERMINATED BY '\
-t' OPTIONALLY ENCLOSED BY '"' IGNORE 1 ROWS;
+    LOAD DATA INFILE '/var/lib/mysql-files/Underlying Cause of Death, 2018-2022, Single Race_year_1_19_trunc.txt' INTO TABLE wonder_2018_2022 FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' IGNORE 1 ROWS;
+
+Websites that were very helpful in the above commands:
+
+https://blog.skyvia.com/how-to-import-csv-file-into-mysql-table-in-4-different-ways/#Importing-CSV-into-MySQL-Automatically
+
+https://stackoverflow.com/questions/32756710/count-specific-character-in-a-cell-in-openoffice-calc
+
+https://stackoverflow.com/questions/29981417/mysql-load-data-infile-from-csv-fields-optionally-enclosed-by-quotes-numbers-h
+
+https://stackoverflow.com/questions/32737478/how-should-i-resolve-secure-file-priv-in-mysql
+
+
