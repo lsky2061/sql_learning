@@ -33,6 +33,6 @@ https://stackoverflow.com/questions/29981417/mysql-load-data-infile-from-csv-fie
 
 https://stackoverflow.com/questions/32737478/how-should-i-resolve-secure-file-priv-in-mysql
 
-In WISQARS, "Motor Vehicle, Overall" includes "Motor vehicle, traffic", "Pedal cyclist, other", "Pedestrian, other" and "Transport, other land"
+In WISQARS, "Motor Vehicle, Overall" includes "Motor vehicle, traffic", "Pedal cyclist, other", "Pedestrian, other" and "Transport, other land".
 
 
