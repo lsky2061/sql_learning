@@ -15,7 +15,21 @@ In my case 'YOUR_SYSTEM_USER' = luke
 
 https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost
 
+#Data Celaning
+
 Using the CDC WONDER tab file, I had to remove the "notes" at the end to prevent the error ERROR 1261 (01000): Row 2898 doesn't contain data for all columns
+
+For the WISQARS file, it contains serveral entries with a double asterisk after any number between 10 and 20. Several entries are just "--" in indicate a "indicates value (between one to nine deaths)" An example row:
+
+    "Cut/Pierce","Homicide","18","2020","19**","4,410,589","0.43**","--","893"
+
+This means that 19 18-year-olds were murdered by cutting or piercing in 2020 in the US. While the rest of this document is focused on data analysis, SQL methods, and my goal of answering a specific question, I want to make sure I remember something. While evaluating these data to find the truth and make our world a safer and better place, I think we always need to remember that each of these numbers represents a person's life cut short, a tragedy, and a grieving family. 
+
+#Data Loading
+
+First, I created a database to hold the two tables...
+
+...more to come here.
 
 After several attempts and refinements, 
 
