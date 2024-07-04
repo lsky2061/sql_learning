@@ -68,6 +68,17 @@ To clean the WISQARS data for importing, I did the following
 * As with WONDER, I removed the explanatory notes at the end.
 * The population values are imported as text because SQL won't import them as integers since they contain commas. This is not relevant to the current analysis since w are comparing number of deaths. Calculating a rate would not yield more useful information since the denomniator (population) is the same.
 
+# Data Analysis
+
+## WONDER
+
+Firearm categories
+* Accidental discharge of firearms (W32-W34)
+* Intentional self-harm (suicide) by discharge of firearms (X72-X74)
+* Assault (homicide) by discharge of firearms (*U01.4,X93-X95)
+* Discharge of firearms, undetermined intent (Y22-Y24)
+
+
 
 
 
