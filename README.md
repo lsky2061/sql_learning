@@ -25,6 +25,8 @@ For the WISQARS file, it contains serveral entries with a double asterisk after 
 
 This means that 19 18-year-olds were murdered by cutting or piercing in 2020 in the US. While the rest of this document is focused on data analysis, SQL methods, and my goal of answering a specific question, I want to make sure I remember something. While evaluating these data to find the truth and make our world a safer and better place, I think we always need to remember that each of these numbers represents a person's life cut short, a tragedy, and a grieving family. 
 
+I opened the file in emacs and removed all of the asterisks. 
+
 #Data Loading
 
 First, I created a database to hold the two tables...
