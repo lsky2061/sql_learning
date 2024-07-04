@@ -15,7 +15,7 @@ In my case 'YOUR_SYSTEM_USER' = luke
 
 https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost
 
-#Data Celaning
+# Data Celaning
 
 Using the CDC WONDER tab file, I had to remove the "notes" at the end to prevent the error ERROR 1261 (01000): Row 2898 doesn't contain data for all columns
 
@@ -27,19 +27,21 @@ This means that 19 18-year-olds were murdered by cutting or piercing in 2020 in 
 
 I opened the file in emacs and removed all of the asterisks. 
 
-#Data Loading
+# Data Loading
 
 First, I created a database to hold the two tables...
 
-...more to come here.
+     create database cdc_2018;
 
+## Loading WONDER Database
+    
 After several attempts and refinements, 
 
     CREATE TABLE wonder_2018_2022 ( notes VARCHAR(128) DEFAULT NULL, icd_10_113_cause VARCHAR(256) DEFAULT NULL, icd_10_113_code VARCHAR(16) DEFAULT NULL, age_char VARCHAR(16) DEFAULT NULL, age_num INTEGER DEFAULT NULL, year VARCHAR(16) DEFAULT NULL, year_num INTEGER DEFAULT NULL, deaths INTEGER DEFAULT NULL, population INTEGER DEFAULT NULL, crude_rate VARCHAR(16) DEFAULT NULL);
 
     LOAD DATA INFILE '/var/lib/mysql-files/Underlying Cause of Death, 2018-2022, Single Race_year_1_19_trunc.txt' INTO TABLE wonder_2018_2022 FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' IGNORE 1 ROWS;
 
-Websites that were very helpful in the above commands:
+Websites that were very helpful in the above commands
 
 https://blog.skyvia.com/how-to-import-csv-file-into-mysql-table-in-4-different-ways/#Importing-CSV-into-MySQL-Automatically
 
@@ -49,6 +51,17 @@ https://stackoverflow.com/questions/29981417/mysql-load-data-infile-from-csv-fie
 
 https://stackoverflow.com/questions/32737478/how-should-i-resolve-secure-file-priv-in-mysql
 
+## Loading WISQARS Database
+
 In WISQARS, "Motor Vehicle, Overall" includes "Motor vehicle, traffic", "Pedal cyclist, other", "Pedestrian, other" and "Transport, other land".
+
+To clean the WISQARS data for importing, I did the following
+
+* Remove all asterisks. Some numbers are marked with asterisks to indicate "unstable value (<20 deaths)"
+* All entries consisting of "--" indicate "suppressed value (between one to nine deaths)." To allow these to be imported as integers while still keeping them obvious as supressed values, I replaced all occurrences of "--" in the .csv file with -1 using emacs.
+* As with WONDER, I removed the explanatory notes at the end.
+* The population values are imported as text because SQL won't import them as integers since they contain commas. This is not relevant to the current analysis since w are comparing number of deaths. Calculating a rate would not yield more useful information since the denomniator (population) is the same.
+
+
 
 
