@@ -14,3 +14,5 @@ sudo service mysql restart
 In my case 'YOUR_SYSTEM_USER' = luke
 
 https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost
+
+Using the CDC WONDER tab file, I had to remove the "notes" at the end to prevent the error ERROR 1261 (01000): Row 2898 doesn't contain data for all columns
