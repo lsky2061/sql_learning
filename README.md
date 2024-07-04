@@ -1,3 +1,7 @@
+# The Question
+
+# Getting MySQL working
+
 First, I had to reinstall mysql-server. Then I followed the instructions below
 
     sudo mysql -u root # I had to use "sudo" since it was a new installation
@@ -14,6 +18,8 @@ First, I had to reinstall mysql-server. Then I followed the instructions below
 In my case 'YOUR_SYSTEM_USER' = luke
 
 https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost
+
+# Background and Data
 
 # Data Cleaning
 
