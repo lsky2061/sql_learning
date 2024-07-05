@@ -78,6 +78,21 @@ Firearm categories
 * Assault (homicide) by discharge of firearms (*U01.4,X93-X95)
 * Discharge of firearms, undetermined intent (Y22-Y24)
 
+## WISQARS
+    mysql> select year, SUM(deaths) from wisqars_2018_2022 WHERE mechanism = 'Firearm' AND deaths>0 AND age<=19 AND age>=13 GROUP BY year ORDER BY year;
+    +------+-------------+
+    | year | SUM(deaths) |
+    +------+-------------+
+    | 2018 |        3039 |
+    | 2019 |        3064 |
+    | 2020 |        3879 |
+    | 2021 |        4264 |
+    | 2022 |        4167 |
+    +------+-------------+
+
+
+## Results
+
 
 
 
