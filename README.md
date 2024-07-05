@@ -104,6 +104,7 @@ Specifically, in WISQARS, one can use either the "Motor vehicle, traffic" mechan
     | 2022 |        3029 |
     +------+-------------+
 
+Fiream deaths are simpler as WISQARS had one mechanism for 'Firearm.'
 
     mysql> select year, SUM(deaths) from wisqars_2018_2022 WHERE mechanism = 'Firearm' AND deaths>0 AND age<=19 AND age>=13 GROUP BY year ORDER BY year;
     +------+-------------+
@@ -115,6 +116,37 @@ Specifically, in WISQARS, one can use either the "Motor vehicle, traffic" mechan
     | 2021 |        4264 |
     | 2022 |        4167 |
     +------+-------------+
+
+It is important to note that many of these firearm deaths are suicides; this is indicated by the "intent" column.
+
+    mysql> select year, intent, SUM(deaths) from wisqars_2018_2022 WHERE mechanism = 'firearm' AND deaths>0 AND age>=13 and age<=19 GROUP BY year,intent ORDER BY year,intent ;
+    +------+--------------------+-------------+
+    | year | intent             | SUM(deaths) |
+    +------+--------------------+-------------+
+    | 2018 | Homicide           |        1664 |
+    | 2018 | Legal Intervention |          11 |
+    | 2018 | Suicide            |        1253 |
+    | 2018 | Undetermined       |          49 |
+    | 2018 | Unintentional      |          62 |
+    | 2019 | Homicide           |        1843 |
+    | 2019 | Suicide            |        1129 |
+    | 2019 | Undetermined       |          34 |
+    | 2019 | Unintentional      |          58 |
+    | 2020 | Homicide           |        2543 |
+    | 2020 | Legal Intervention |          13 |
+    | 2020 | Suicide            |        1239 |
+    | 2020 | Undetermined       |          32 |
+    | 2020 | Unintentional      |          52 |
+    | 2021 | Homicide           |        2798 |
+    | 2021 | Suicide            |        1358 |
+    | 2021 | Undetermined       |          50 |
+    | 2021 | Unintentional      |          58 |
+    | 2022 | Homicide           |        2841 |
+    | 2022 | Legal Intervention |          10 |
+    | 2022 | Suicide            |        1210 |
+    | 2022 | Undetermined       |          47 |
+    | 2022 | Unintentional      |          59 |
+    +------+--------------------+-------------+
 
 
 ## Results
