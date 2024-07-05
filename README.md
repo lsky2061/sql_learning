@@ -1,5 +1,10 @@
 # The Question
 
+> Are firearms for motor vehicle crashes the leading cause of deat of teenagers in the US?
+
+A grim question to be sure, and one I heard debated recently. Since I am an avid believer in finding the truth and citing my sources, I tried searching for the answer online. This proved much more difficult than I thought because all of the articles I found referred to deaths of teenagers _and_ children, with age ranges of 0-17, 0-19, 1-17, and 1-19, but I could not find an answer to this question for the teenage age range (13-19). The articles I found include a very informative _Washington Post_ Fact Check that parses many of the claims and data analysis choices around this issue. It also references a [Johns Hopkins study](https://publichealth.jhu.edu/sites/default/files/2024-01/2023-june-cgvs-u-s-gun-violence-in-2021-v3.pdf) and an article from the New England Journal of Medicine. 
+
+
 # Getting MySQL working
 
 First, I had to reinstall mysql-server. Then I followed the instructions below
@@ -20,6 +25,8 @@ In my case 'YOUR_SYSTEM_USER' = luke
 https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost
 
 # Background and Data
+
+The CDC maintains two databases with the relevant information. 
 
 # Data Cleaning
 
