@@ -68,14 +68,6 @@ To clean the WISQARS data for importing, I did the following
 
 # Data Analysis
 
-## WONDER
-
-Firearm categories
-* Accidental discharge of firearms (W32-W34)
-* Intentional self-harm (suicide) by discharge of firearms (X72-X74)
-* Assault (homicide) by discharge of firearms (*U01.4,X93-X95)
-* Discharge of firearms, undetermined intent (Y22-Y24)
-
 ## WISQARS
 
 As the _Washington Post_ article notes, the WISQARS database "lists both deaths just from traffic-related crashes and an overall motor vehicle category that would include pedestrian and other deaths, such as death while in a stationary car."
@@ -147,7 +139,15 @@ It is important to note that many of these firearm deaths are suicides; this is 
     | 2022 | Undetermined       |          47 |
     | 2022 | Unintentional      |          59 |
     +------+--------------------+-------------+
+## WONDER
 
+The WONDER database has a similar separation of motor vehicle death causes, with "Transport accidents (V01-V99,Y85)" being the more inclusive and "Motor vehicle accidents (V02-V04,V09.0,V09.2,V12-V14,V19.0-V19.2,V19.4-V19.6,V20-V79,V80.3-V80.5,V81.0-V81.1,V82.0-V82.1,V83-V86,V87.0-V87.8,V88.0-V88.8,V89.0,V89.2)" the more specific.
+
+Firearm categories
+* Accidental discharge of firearms (W32-W34)
+* Intentional self-harm (suicide) by discharge of firearms (X72-X74)
+* Assault (homicide) by discharge of firearms (*U01.4,X93-X95)
+* Discharge of firearms, undetermined intent (Y22-Y24)
 
 ## Results
 
