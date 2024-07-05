@@ -59,8 +59,6 @@ https://stackoverflow.com/questions/32737478/how-should-i-resolve-secure-file-pr
 
 ## Loading WISQARS Database
 
-In WISQARS, "Motor Vehicle, Overall" includes "Motor vehicle, traffic", "Pedal cyclist, other", "Pedestrian, other" and "Transport, other land".
-
 To clean the WISQARS data for importing, I did the following
 
 * Remove all asterisks. Some numbers are marked with asterisks to indicate "unstable value (<20 deaths)"
@@ -79,6 +77,34 @@ Firearm categories
 * Discharge of firearms, undetermined intent (Y22-Y24)
 
 ## WISQARS
+
+As the _Washington Post_ article notes, the WISQARS database "lists both deaths just from traffic-related crashes and an overall motor vehicle category that would include pedestrian and other deaths, such as death while in a stationary car."
+
+Specifically, in WISQARS, one can use either the "Motor vehicle, traffic" mechanism or the "Motor Vehicle, Overall" mechanism, which consists of "Motor vehicle, traffic", "Pedal cyclist, other", "Pedestrian, other" and "Transport, other land".
+
+    mysql> select year, SUM(deaths) from wisqars_2018_2022 WHERE mechanism = 'Motor vehicle, traffic' AND deaths>0 AND age<=19 AND age>=13 GROUP BY year ORDER BY year;
+    +------+-------------+
+    | year | SUM(deaths) |
+    +------+-------------+
+    | 2018 |        2486 |
+    | 2019 |        2399 |
+    | 2020 |        2804 |
+    | 2021 |        3147 |
+    | 2022 |        2898 |
+    +------+-------------+
+
+    mysql> select year, SUM(deaths) from wisqars_2018_2022 WHERE mechanism IN ('Motor vehicle, traffic', "Pedal cyclist, other", "Pedestrian, other", "Transport, other land") AND deaths>0 AND age<=19 AND age>=13 GROUP BY year ORDER BY year;
+    +------+-------------+
+    | year | SUM(deaths) |
+    +------+-------------+
+    | 2018 |        2557 |
+    | 2019 |        2501 |
+    | 2020 |        2908 |
+    | 2021 |        3261 |
+    | 2022 |        3029 |
+    +------+-------------+
+
+
     mysql> select year, SUM(deaths) from wisqars_2018_2022 WHERE mechanism = 'Firearm' AND deaths>0 AND age<=19 AND age>=13 GROUP BY year ORDER BY year;
     +------+-------------+
     | year | SUM(deaths) |
