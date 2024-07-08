@@ -30,7 +30,11 @@ The CDC maintains two databases with the relevant information: WISQARS (used by 
 
 # Data Cleaning
 
+## WONDER
+
 Using the CDC WONDER tab file, I had to remove the "notes" at the end to prevent the error ERROR 1261 (01000): Row 2898 doesn't contain data for all columns
+
+## WISQARS
 
 For the WISQARS file, it contains serveral entries with a double asterisk after any number between 10 and 20. Several entries are just "--" in indicate a "indicates value (between one to nine deaths)" An example row:
 
@@ -38,7 +42,12 @@ For the WISQARS file, it contains serveral entries with a double asterisk after 
 
 This means that 19 18-year-olds were murdered by cutting or piercing in 2020 in the US. While the rest of this document is focused on data analysis, SQL methods, and my goal of answering a specific question, I want to make sure I remember something. While evaluating these data to find the truth and make our world a safer and better place, I think we always need to remember that each of these numbers represents a person's life cut short, a tragedy, and a grieving family. 
 
-I opened the file in emacs and removed all of the asterisks. 
+To clean the WISQARS data for importing, I did the following
+
+* Remove all asterisks. Some numbers are marked with asterisks to indicate "unstable value (<20 deaths)"
+* All entries consisting of "--" indicate "suppressed value (between one to nine deaths)." To allow these to be imported as integers while still keeping them obvious as supressed values, I replaced all occurrences of "--" in the .csv file with -1 using emacs.
+* As with WONDER, I removed the explanatory notes at the end.
+* The population values are imported as text because SQL won't import them as integers since they contain commas. This is not relevant to the current analysis since w are comparing number of deaths. Calculating a rate would not yield more useful information since the denomniator (population) is the same.
 
 # Data Loading
 
@@ -66,12 +75,7 @@ https://stackoverflow.com/questions/32737478/how-should-i-resolve-secure-file-pr
 
 ## Loading WISQARS Database
 
-To clean the WISQARS data for importing, I did the following
 
-* Remove all asterisks. Some numbers are marked with asterisks to indicate "unstable value (<20 deaths)"
-* All entries consisting of "--" indicate "suppressed value (between one to nine deaths)." To allow these to be imported as integers while still keeping them obvious as supressed values, I replaced all occurrences of "--" in the .csv file with -1 using emacs.
-* As with WONDER, I removed the explanatory notes at the end.
-* The population values are imported as text because SQL won't import them as integers since they contain commas. This is not relevant to the current analysis since w are comparing number of deaths. Calculating a rate would not yield more useful information since the denomniator (population) is the same.
 
 # Data Analysis
 
@@ -149,6 +153,34 @@ It is important to note that many of these firearm deaths are suicides; this is 
 ## WONDER
 
 The WONDER database has a similar separation of motor vehicle death causes, with "Transport accidents (V01-V99,Y85)" being the more inclusive and "Motor vehicle accidents (V02-V04,V09.0,V09.2,V12-V14,V19.0-V19.2,V19.4-V19.6,V20-V79,V80.3-V80.5,V81.0-V81.1,V82.0-V82.1,V83-V86,V87.0-V87.8,V88.0-V88.8,V89.0,V89.2)" the more specific.
+
+    mysql> select year, SUM(deaths) from wonder_2018_2022 WHERE icd_10_113_cause='Motor vehicle accidents
+    (V02-V04,V09.0,V09.2,V12-V14,V19.0-V19.2,V19.4-V19.6,V20-V79,V80.3-V80.5,V81.0-V81.1,V82.0-V82.1,V83-V86,V87.0-V87.8,V88.0-V88.8,V89.0,V89.2)' AND deaths>0 AND age_num<=19 AND age_num>=13 GROUP BY year OR
+    DER BY year;
+    +-------+-------------+
+    | year  | SUM(deaths) |
+    +-------+-------------+
+    | 2018  |        2552 |
+    | 2019  |        2509 |
+    | 2020  |        2910 |
+    | 2021  |        3249 |
+    | 2022  |        3014 |
+    +-------+-------------+
+
+    
+    mysql> select year, SUM(deaths) from wonder_2018_2022 WHERE icd_10_113_cause='Transport accidents (V01-V99,Y85)' AND deaths>0 AND age_num<=19 AND age_num>=13 GROUP BY year ORDER BY year;
+    
+    +-------+-------------+
+    | year  | SUM(deaths) |
+    +-------+-------------+
+    | 2018  |        2640 |
+    | 2019  |        2600 |
+    | 2020  |        3021 |
+    | 2021  |        3352 |
+    | 2022  |        3113 |
+    +-------+-------------+
+
+
 
 Firearm categories
 * Accidental discharge of firearms (W32-W34)
