@@ -203,12 +203,32 @@ For some bizzare reason, I need a line of text here to make the next code block 
     +-------+-------------+
 
 
-## Results
+# Results
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+I summarize the numberical results in the table below. The "Differnece" column in both cases is the number of firearm deaths minus the the more inclusive motor vehicle death column.
+
+## WISQARS
+
+|Year|Firearm |Motor Vehicle, Traffic|Motor Vehicle, Inclusive |Difference|
+|------------|------------|------------|------------|------------|
+|2018|3039|2486|2557|482|
+|2019|3064|2399|2501|563|
+|2020|3879|2804|2908|971|
+|2021|4264|3147|3261|1003|
+|2022|4167|2898|3029|1138|
+
+## WONDER
+
+|Year|Firearm |Motor Vehicle Crashes|Motor Vehicle, Inclusive |Difference|
+|------------|------------|------------|------------|------------|
+|2018|2979|2552|2640|339|
+|2019|3030|2509|2600|430|
+|2020|3834|2910|3021|813|
+|2021|4214|3249|3352|862|
+|2022|4110|3014|3113|997|
+
+## Loose ends and double checking
+
 
 
 
