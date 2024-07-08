@@ -190,17 +190,17 @@ Firearm categories
 
 For some bizzare reason, I need a line of text here to make the next code block look right.
 
-    mysql> select year, SUM(deaths) from wonder_2018_2022 WHERE icd_10_113_cause IN ('Accidental discharge of firearms (W32-W34)', 'Intentional self-harm (suicide) by discharge of firearms (X72-X74)', 'Assault (homicide) by discharge of firearms (*U01.4,X93-X95)', 'Discharge of firearms, undetermined intent (Y22-Y24') AND deaths>0 AND age_num<=19 AND age_num>=13 GROUP BY year ORDER BY year;
-
+    mysql> select year, SUM(deaths) from wonder_2018_2022 WHERE icd_10_113_cause IN ('Accidental discharge of firearms (W32-W34)', 'Intentional self-harm (suicide) by discharge of firearms (X72-X74)', 'Assault (homicide) by discharge of firearms (*U01.4,X93-X95)', 'Discharge of firearms, undetermined intent (Y22-Y24)') AND deaths>0 AND age_num<=19 AND age_num>=13 GROUP BY year ORDER BY year;
     +-------+-------------+
     | year  | SUM(deaths) |
     +-------+-------------+
-    | 2018  |        2979 |
-    | 2019  |        3030 |
-    | 2020  |        3834 |
-    | 2021  |        4214 |
-    | 2022  |        4110 |
+    | 2018  |        3028 |
+    | 2019  |        3064 |
+    | 2020  |        3866 |
+    | 2021  |        4264 |
+    | 2022  |        4157 |
     +-------+-------------+
+
 
 
 # Results
