@@ -1,6 +1,6 @@
 # The Question
 
-> Are firearms or motor vehicle crashes the leading cause of deat of teenagers in the US?
+> Are firearms or motor vehicle crashes the leading cause of death of teenagers in the US?
 
 A grim question to be sure, and one I heard debated recently. Since I am an avid believer in finding the truth and citing my sources, I tried searching for the answer online. This proved much more difficult than I thought because all of the articles I found referred to deaths of teenagers _and_ children, with age ranges of 0-17, 0-19, 1-17, and 1-19, but I could not find an answer to this question for the teenage age range (13-19). The articles I found include a very informative [_Washington Post_ Fact Check](https://www.washingtonpost.com/politics/2024/02/07/is-gun-violence-leading-cause-death-children/) that parses many of the claims and data analysis choices around this issue. It also references a [Johns Hopkins study](https://publichealth.jhu.edu/sites/default/files/2024-01/2023-june-cgvs-u-s-gun-violence-in-2021-v3.pdf) and an article from the [_New England Journal of Medicine_](https://www.nejm.org/doi/full/10.1056/NEJMc2201761). 
 
@@ -36,7 +36,7 @@ Using the CDC WONDER tab file, I had to remove the "notes" at the end to prevent
 
 ## WISQARS
 
-For the WISQARS file, it contains serveral entries with a double asterisk after any number between 10 and 20. Several entries are just "--" in indicate a "indicates value (between one to nine deaths)" An example row:
+For the WISQARS file, it contains several entries with a double asterisk after any number between 10 and 20. Several entries are just "--" in indicate a "indicates value (between one to nine deaths)" An example row:
 
     "Cut/Pierce","Homicide","18","2020","19**","4,410,589","0.43**","--","893"
 
@@ -45,9 +45,9 @@ This means that 19 18-year-olds were murdered by cutting or piercing in 2020 in 
 To clean the WISQARS data for importing, I did the following
 
 * Remove all asterisks. Some numbers are marked with asterisks to indicate "unstable value (<20 deaths)"
-* All entries consisting of "--" indicate "suppressed value (between one to nine deaths)." To allow these to be imported as integers while still keeping them obvious as supressed values, I replaced all occurrences of "--" in the .csv file with -1 using emacs.
+* All entries consisting of "--" indicate "suppressed value (between one to nine deaths)." To allow these to be imported as integers while still keeping them obvious as suppressed values, I replaced all occurrences of "--" in the .csv file with -1 using emacs.
 * As with WONDER, I removed the explanatory notes at the end.
-* The population values are imported as text because SQL won't import them as integers since they contain commas. This is not relevant to the current analysis since w are comparing number of deaths. Calculating a rate would not yield more useful information since the denomniator (population) is the same.
+* The population values are imported as text because SQL won't import them as integers since they contain commas. This is not relevant to the current analysis since we are comparing number of deaths. Calculating a rate would not yield more useful information since the denominator (population) is the same.
 
 # Data Loading
 
@@ -107,7 +107,7 @@ Specifically, in WISQARS, one can use either the "Motor vehicle, traffic" mechan
     | 2022 |        3029 |
     +------+-------------+
 
-Fiream deaths are simpler as WISQARS had one mechanism for 'Firearm.'
+Firearm deaths are simpler as WISQARS had one mechanism for 'Firearm.'
 
     mysql> select year, SUM(deaths) from wisqars_2018_2022 WHERE mechanism = 'Firearm' AND deaths>0 AND age<=19 AND age>=13 GROUP BY year ORDER BY year;
     +------+-------------+
@@ -188,7 +188,7 @@ Firearm categories
 * Assault (homicide) by discharge of firearms (*U01.4,X93-X95)
 * Discharge of firearms, undetermined intent (Y22-Y24)
 
-For some bizzare reason, I need a line of text here to make the next code block look right.
+For some bizarre reason, I need a line of text here to make the next code block look right.
 
     mysql> select year, SUM(deaths) from wonder_2018_2022 WHERE icd_10_113_cause IN ('Accidental discharge of firearms (W32-W34)', 'Intentional self-harm (suicide) by discharge of firearms (X72-X74)', 'Assault (homicide) by discharge of firearms (*U01.4,X93-X95)', 'Discharge of firearms, undetermined intent (Y22-Y24)') AND deaths>0 AND age_num<=19 AND age_num>=13 GROUP BY year ORDER BY year;
     +-------+-------------+
@@ -205,7 +205,7 @@ For some bizzare reason, I need a line of text here to make the next code block 
 
 # Results
 
-I summarize the numberical results in the table below. The "Differenece" column in both cases is the number of firearm deaths minus the the more inclusive motor vehicle death column.
+I summarize the numerical results in the table below. The "Difference" column in both cases is the number of firearm deaths minus the more inclusive motor vehicle death column.
 
 ## WISQARS
 
