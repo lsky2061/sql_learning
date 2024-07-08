@@ -205,7 +205,7 @@ For some bizzare reason, I need a line of text here to make the next code block 
 
 # Results
 
-I summarize the numberical results in the table below. The "Differnece" column in both cases is the number of firearm deaths minus the the more inclusive motor vehicle death column.
+I summarize the numberical results in the table below. The "Differenece" column in both cases is the number of firearm deaths minus the the more inclusive motor vehicle death column.
 
 ## WISQARS
 
