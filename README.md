@@ -189,6 +189,7 @@ Firearm categories
 * Discharge of firearms, undetermined intent (Y22-Y24)
 
     mysql> select year, SUM(deaths) from wonder_2018_2022 WHERE icd_10_113_cause IN ('Accidental discharge of firearms (W32-W34)', 'Intentional self-harm (suicide) by discharge of firearms (X72-X74)', 'Assault (homicide) by discharge of firearms (*U01.4,X93-X95)', 'Discharge of firearms, undetermined intent (Y22-Y24') AND deaths>0 AND age_num<=19 AND age_num>=13 GROUP BY year ORDER BY year;
+  
     +-------+-------------+
     | year  | SUM(deaths) |
     +-------+-------------+
