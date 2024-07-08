@@ -203,6 +203,10 @@ Firearm categories
 
 ## Results
 
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
 
 
 
