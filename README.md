@@ -1,6 +1,6 @@
 # The Question
 
-> Are firearms for motor vehicle crashes the leading cause of deat of teenagers in the US?
+> Are firearms or motor vehicle crashes the leading cause of deat of teenagers in the US?
 
 A grim question to be sure, and one I heard debated recently. Since I am an avid believer in finding the truth and citing my sources, I tried searching for the answer online. This proved much more difficult than I thought because all of the articles I found referred to deaths of teenagers _and_ children, with age ranges of 0-17, 0-19, 1-17, and 1-19, but I could not find an answer to this question for the teenage age range (13-19). The articles I found include a very informative [_Washington Post_ Fact Check](https://www.washingtonpost.com/politics/2024/02/07/is-gun-violence-leading-cause-death-children/) that parses many of the claims and data analysis choices around this issue. It also references a [Johns Hopkins study](https://publichealth.jhu.edu/sites/default/files/2024-01/2023-june-cgvs-u-s-gun-violence-in-2021-v3.pdf) and an article from the [_New England Journal of Medicine_](https://www.nejm.org/doi/full/10.1056/NEJMc2201761). 
 
