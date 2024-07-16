@@ -263,6 +263,52 @@ I summarize the numerical results in the table below. The "Difference" column in
 
 ## Loose ends and double checking
 
+First step in determining why the firearm death numbers do not match for all years:
+    
+    CREATE TABLE wisqars_fs select year, age, SUM(deaths) AS sd from wisqars_2018_2022 WHERE mechanism = 'firearm' AND deaths>0 AND age>=13 and age<=19 AND intent='Suicide' GROUP BY year,age ORDER BY year,age;
+    
+    CREATE TABLE wonder_fs select year, age_num, SUM(deaths) AS sd from wonder_2018_2022 WHERE icd_10_113_code = 'GR113-125' AND deaths>0 AND age_num<=19 AND age_num>=13 GROUP BY year,age_num ORDER BY year,age_num;
+    
+    mysql> select wisqars_fs.age, wisqars_fs.year, wonder_fs.sd, wisqars_fs.sd, (wonder_fs.sd - wisqars_fs.sd) AS diff  FROM wisqars_fs INNER JOIN wonder_fs ON (wisqars_fs.age = wonder_fs.age_num AND wisqars_fs.year = wonder_fs.year) WHERE (wonder_fs.sd - wisqars_fs.sd)=0;
+    +------+------+------+------+------+
+    | age  | year | sd   | sd   | diff |
+    +------+------+------+------+------+
+    |   13 | 2018 |   63 |   63 |    0 |
+    |   14 | 2018 |   96 |   96 |    0 |
+    |   15 | 2018 |  138 |  138 |    0 |
+    |   16 | 2018 |  161 |  161 |    0 |
+    |   17 | 2018 |  223 |  223 |    0 |
+    |   18 | 2018 |  278 |  278 |    0 |
+    |   19 | 2018 |  294 |  294 |    0 |
+    |   13 | 2019 |   48 |   48 |    0 |
+    |   14 | 2019 |   86 |   86 |    0 |
+    |   15 | 2019 |  123 |  123 |    0 |
+    |   16 | 2019 |  169 |  169 |    0 |
+    |   17 | 2019 |  193 |  193 |    0 |
+    |   18 | 2019 |  232 |  232 |    0 |
+    |   19 | 2019 |  278 |  278 |    0 |
+    |   13 | 2020 |   60 |   60 |    0 |
+    |   14 | 2020 |  110 |  110 |    0 |
+    |   15 | 2020 |  142 |  142 |    0 |
+    |   16 | 2020 |  177 |  177 |    0 |
+    |   17 | 2020 |  178 |  178 |    0 |
+    |   18 | 2020 |  249 |  249 |    0 |
+    |   19 | 2020 |  323 |  323 |    0 |
+    |   13 | 2021 |   59 |   59 |    0 |
+    |   14 | 2021 |  114 |  114 |    0 |
+    |   15 | 2021 |  164 |  164 |    0 |
+    |   16 | 2021 |  206 |  206 |    0 |
+    |   17 | 2021 |  221 |  221 |    0 |
+    |   18 | 2021 |  251 |  251 |    0 |
+    |   19 | 2021 |  343 |  343 |    0 |
+    |   13 | 2022 |   56 |   56 |    0 |
+    |   14 | 2022 |   91 |   91 |    0 |
+    |   15 | 2022 |  131 |  131 |    0 |
+    |   16 | 2022 |  170 |  170 |    0 |
+    |   17 | 2022 |  205 |  205 |    0 |
+    |   18 | 2022 |  252 |  252 |    0 |
+    |   19 | 2022 |  305 |  305 |    0 |
+    +------+------+------+------+------+
 
 
 
