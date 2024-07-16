@@ -28,6 +28,39 @@ https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-
 
 The CDC maintains two databases with the relevant information: WISQARS (used by ...) and WONDER (used by ...)
 
+    mysql> DESCRIBE wisqars_2018_2022;
+    +-------------------+--------------+------+-----+---------+-------+
+    | Field             | Type         | Null | Key | Default | Extra |
+    +-------------------+--------------+------+-----+---------+-------+
+    | mechanism         | varchar(128) | YES  |     | NULL    |       |
+    | intent            | varchar(20)  | YES  |     | NULL    |       |
+    | age               | int          | YES  |     | NULL    |       |
+    | year              | int          | YES  |     | NULL    |       |
+    | deaths            | int          | YES  |     | NULL    |       |
+    | population        | text         | YES  |     | NULL    |       |
+    | crude_rate        | float        | YES  |     | NULL    |       |
+    | age_adjusted_rate | float        | YES  |     | NULL    |       |
+    | YPLL              | text         | YES  |     | NULL    |       |
+    +-------------------+--------------+------+-----+---------+-------+
+
+    mysql> DESCRIBE wonder_2018_2022;
+    +------------------+--------------+------+-----+---------+-------+
+    | Field            | Type         | Null | Key | Default | Extra |
+    +------------------+--------------+------+-----+---------+-------+
+    | notes            | varchar(128) | YES  |     | NULL    |       |
+    | icd_10_113_cause | varchar(256) | YES  |     | NULL    |       |
+    | icd_10_113_code  | varchar(16)  | YES  |     | NULL    |       |
+    | age_char         | varchar(16)  | YES  |     | NULL    |       |
+    | age_num          | int          | YES  |     | NULL    |       |
+    | year             | varchar(16)  | YES  |     | NULL    |       |
+    | year_num         | int          | YES  |     | NULL    |       |
+    | deaths           | int          | YES  |     | NULL    |       |
+    | population       | int          | YES  |     | NULL    |       |
+    | crude_rate       | varchar(16)  | YES  |     | NULL    |       |
+    +------------------+--------------+------+-----+---------+-------+
+
+
+
 # Data Cleaning
 
 ## WONDER
